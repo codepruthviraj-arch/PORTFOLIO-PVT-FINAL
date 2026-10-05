@@ -10,9 +10,7 @@ export type Project = {
   description: string;
   tags: string[];
   image?: string;
-  brief: string;
   roles: string[];
-  approach: string;
   result?: string; // only fill with real results
 };
 
@@ -23,12 +21,9 @@ export const projects: Project[] = [
     category: "Events · Promotion",
     role: "Concepts, reels, editing & promotion",
     image: "/images/Gritty%20Cinematic%20Events%20Collage.png",
-    description:
-      "Promotional concepts and reels for local events including Retro Bollywood Night and a Cosplay / Diet Coke Rave.",
+    description: "",
     tags: ["Concepts", "Reels", "Editing", "Promotion"],
-    brief: "Local events needing attention-grabbing promotional content. [Add campaign details]",
-    roles: ["Concept", "Scripting", "Editing", "Social Media"],
-    approach: "[Add approach details]",
+    roles: ["Concept", "Scripting", "Videography", "Editing", "Social Media"],
   },
   {
     slug: "arihant-jewellers",
@@ -40,11 +35,7 @@ export const projects: Project[] = [
     description:
       "Developing social-first content for a jewellery brand, from concepts and scripts to production, editing and publishing.",
     tags: ["Content", "Production", "Editing", "Social Media"],
-    brief:
-      "A jewellery brand needing consistent, product-focused social content and promotional reels. [Add campaign details]",
-    roles: ["Strategy", "Concept", "Scripting", "Production", "Editing", "Social Media"],
-    approach:
-      "Built content around the products — scripted reels, planned shoots, edited for social and managed publishing. [Add approach details]",
+    roles: ["Strategy", "Concept", "Scripting", "Videography", "Production", "Editing", "Social Media"],
   },
   {
     slug: "education-client",
@@ -55,9 +46,7 @@ export const projects: Project[] = [
     description:
       "Running social media for an education institute — content planning, reels, stories and editing.",
     tags: ["Planning", "Reels", "Stories", "Editing"],
-    brief: "[Add what the institute needed]",
-    roles: ["Strategy", "Concept", "Editing", "Social Media"],
-    approach: "[Add approach details]",
+    roles: ["Strategy", "Concept", "Videography", "Editing", "Social Media"],
   },
   {
     slug: "advocate-client",
@@ -68,9 +57,7 @@ export const projects: Project[] = [
     description:
       "Short-form video content for a professional services client, from creation to reel edit.",
     tags: ["Short-form", "Reels", "Editing"],
-    brief: "[Add what the client needed]",
-    roles: ["Concept", "Production", "Editing"],
-    approach: "[Add approach details]",
+    roles: ["Concept", "Videography", "Production", "Editing"],
   },
 ];
 
@@ -109,7 +96,7 @@ export const clients = ["Arihant Jewellers", "Education Institute", "Advocate", 
 // Replace "#" with your real links.
 export const links = {
   instagram: "https://www.instagram.com/pruthviraj.mov/",
-  linkedin: "#",
+  telegram: "https://t.me/prithviirajputt",
   email: "mailto:hello@example.com",
   emailAddress: "hello@example.com",
   whatsapp: "https://wa.me/7385725569",

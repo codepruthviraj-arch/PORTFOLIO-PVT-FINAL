@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useRef, type FormEvent, type MouseEvent } from "react";
-import { ArrowUpRight, ArrowDown, Plus, X, Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, ArrowDown, Plus, X, Instagram, Send, Mail, MessageCircle } from "lucide-react";
 import { Nav, Badge } from "@/components/site/Nav";
 import { SectionLink } from "@/components/site/SectionLink";
 import { Footer } from "@/components/site/Footer";
@@ -492,7 +492,7 @@ function Contact() {
           <h2 className="mt-6 text-4xl font-bold uppercase tracking-tight md:text-7xl">Have content in mind?</h2>
           <p className="mx-auto mt-5 max-w-xl text-muted-foreground">Whether you need someone to develop the idea, write the script, handle production, edit the content or manage the social side — let's talk.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-2">
-            {[[Instagram, "Instagram", links.instagram], [Linkedin, "LinkedIn", links.linkedin], [Mail, "Email", links.email], [MessageCircle, "WhatsApp", links.whatsapp]].map(([Icon, l, h]) => {
+            {[[Instagram, "Instagram", links.instagram], [Send, "Telegram", links.telegram], [Mail, "Email", links.email], [MessageCircle, "WhatsApp", links.whatsapp]].map(([Icon, l, h]) => {
               const I = Icon as typeof Mail;
               return <a key={l as string} href={h as string} className="inline-flex items-center gap-1.5 rounded-full bg-card px-4 py-2 text-sm font-medium shadow-pill transition-transform hover:-translate-y-0.5"><I className="h-4 w-4" />{l as string}</a>;
             })}

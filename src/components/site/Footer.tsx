@@ -41,8 +41,8 @@ export function Footer() {
           <a href={links.instagram} className="block hover:underline">
             Instagram
           </a>
-          <a href={links.linkedin} className="block hover:underline">
-            LinkedIn
+          <a href={links.whatsapp} className="block hover:underline">
+            WhatsApp
           </a>
         </div>
       </div>

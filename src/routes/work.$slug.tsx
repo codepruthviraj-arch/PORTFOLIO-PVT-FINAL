@@ -86,14 +86,15 @@ function CaseStudy() {
           <Reveal>
             <p className="label-mono mt-10 text-muted-foreground">{p.category}{p.location ? ` · ${p.location}` : ""}</p>
             <h1 className="mt-4 text-5xl font-extrabold uppercase leading-[0.95] tracking-tight md:text-8xl">{p.name}</h1>
-            <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{p.description}</p>
+            {p.description && (
+              <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{p.description}</p>
+            )}
           </Reveal>
           <Reveal>
             {p.image ? <SaturatingProjectImage src={p.image} alt={p.name} className="mt-12 aspect-[4/3] w-full rounded-3xl" /> : <Placeholder label="[Add hero image / reel thumbnail]" className="mt-12 aspect-[4/3] w-full rounded-3xl" />}
           </Reveal>
 
-          <div className="mt-20 grid gap-14 md:grid-cols-2">
-            <Reveal><Label>The Brief</Label><p className="mt-4 text-xl leading-relaxed">{p.brief}</p></Reveal>
+          <div className="mt-20 grid gap-14">
             <Reveal>
               <Label>My Role</Label>
               <div className="mt-4 flex flex-wrap gap-2">
@@ -101,8 +102,6 @@ function CaseStudy() {
               </div>
             </Reveal>
           </div>
-
-          <Reveal className="mt-20"><Label>My Approach</Label><p className="mt-4 max-w-3xl text-2xl font-medium leading-snug tracking-tight">{p.approach}</p></Reveal>
 
           {p.slug === "arihant-jewellers" || p.slug === "event-campaigns" || p.slug === "education-client" ? (
             <Reveal className="mt-12">
