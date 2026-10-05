@@ -1,0 +1,511 @@
+.cassette-player {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  height: 14.5rem;
+  color: #e8e6e1;
+  font-family: "Courier New", monospace;
+}
+
+.cassette-deck {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding: clamp(0.55rem, 2vw, 0.85rem);
+  border: 1px solid #555451;
+  border-radius: 1rem;
+  background:
+    repeating-linear-gradient(2deg, rgb(255 255 255 / 2%) 0 1px, transparent 1px 3px),
+    linear-gradient(145deg, #343432, #111110 48%, #242422);
+  box-shadow: 0 18px 42px -26px rgb(0 0 0 / 85%), inset 0 1px rgb(255 255 255 / 16%), inset 0 -2px 4px rgb(0 0 0 / 90%);
+}
+
+.cassette-deck::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: repeating-linear-gradient(92deg, transparent 0 17px, rgb(255 255 255 / 1.5%) 17px 18px);
+  content: "";
+  pointer-events: none;
+}
+
+.cassette-deck::after {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  border-radius: inherit;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='.68'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(176deg, transparent 0 21px, rgb(255 255 255 / 12%) 21px 22px, transparent 22px 47px);
+  background-size: 180px 180px, 100% 100%;
+  content: "";
+  opacity: 0.32;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.cassette-face {
+  display: grid;
+  grid-template-rows: 1fr 0.82fr 1.18fr;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #6a6965;
+  border-radius: 0.7rem;
+  background: #171716;
+  box-shadow: inset 0 0 0 3px #0a0a09, inset 0 0 0 4px #42413e;
+}
+
+.cassette-screw {
+  position: absolute;
+  z-index: 2;
+  width: 1.05rem;
+  aspect-ratio: 1;
+  border: 1px solid #777671;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #666560, #161615 72%);
+  box-shadow: 0 1px 2px #000, inset 0 1px rgb(255 255 255 / 25%);
+}
+
+.cassette-screw::after,
+.cassette-screw::before {
+  position: absolute;
+  top: 50%;
+  left: 22%;
+  width: 56%;
+  height: 1px;
+  background: #a7a6a0;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.cassette-screw::after { transform: rotate(-45deg); }
+.cassette-screw--top-left { top: 0.45rem; left: 0.45rem; }
+.cassette-screw--top-right { top: 0.45rem; right: 0.45rem; }
+.cassette-screw--bottom-left { bottom: 0.45rem; left: 0.45rem; }
+.cassette-screw--bottom-right { right: 0.45rem; bottom: 0.45rem; }
+
+.cassette-label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(4rem, 18%, 6.5rem);
+  gap: 1rem;
+  min-height: 0;
+  padding: 0.65rem 0.9rem 0.55rem 2.15rem;
+  border-bottom: 3px solid #080808;
+  background:
+    repeating-linear-gradient(0deg, rgb(0 0 0 / 5%) 0 1px, transparent 1px 4px),
+    linear-gradient(112deg, #d4d1c8, #aaa79f 58%, #d5d2c9);
+  color: #191918;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 55%), inset 0 -3px 6px rgb(0 0 0 / 22%);
+}
+
+.cassette-track-copy { position: relative; min-width: 0; }
+
+.cassette-overline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: #4a4946;
+  font-size: 0.59rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.cassette-track-count { flex-shrink: 0; letter-spacing: 0.1em; }
+
+.cassette-title {
+  overflow: hidden;
+  margin: 0.45rem 0 0;
+  font-family: "Courier New", monospace;
+  font-size: clamp(1.05rem, 2.8vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cassette-artist {
+  overflow: hidden;
+  margin: 0.3rem 0 0;
+  color: #454440;
+  font-size: 0.77rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cassette-side-mark {
+  position: absolute;
+  right: 0.3rem;
+  bottom: 0;
+  color: #625f58;
+  font-size: 0.5rem;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  transform: rotate(-7deg);
+}
+
+.cassette-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border: 1px solid #686762;
+  border-radius: 0.45rem;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 30%);
+}
+
+.cassette-art--empty {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  place-items: end start;
+  padding: 0.5rem;
+  background:
+    repeating-linear-gradient(165deg, transparent 0 7px, rgb(255 255 255 / 6%) 7px 8px),
+    radial-gradient(ellipse at 75% 22%, #8b8982, transparent 42%),
+    linear-gradient(135deg, #55544f, #191918 76%);
+  color: #e4e1d8;
+}
+
+.cassette-art-orbit {
+  position: absolute;
+  top: 15%;
+  right: 10%;
+  width: 55%;
+  aspect-ratio: 1;
+  border: 1px solid rgb(255 255 255 / 55%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.55rem rgb(255 255 255 / 8%), 0 0 0 1.1rem rgb(0 0 0 / 15%);
+}
+
+.cassette-art-caption {
+  position: relative;
+  font-size: 0.47rem;
+  letter-spacing: 0.13em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.cassette-window {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(0.4rem, 2vw, 0.9rem);
+  min-height: 0;
+  padding: 0.25rem clamp(1.1rem, 6vw, 2.5rem);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 4%), transparent 20% 78%, rgb(255 255 255 / 3%)),
+    #111110;
+  box-shadow: inset 0 8px 15px -12px #fff, inset 0 -9px 15px -12px #fff;
+}
+
+.cassette-reel {
+  position: relative;
+  display: grid;
+  width: clamp(1.75rem, 3vw, 2.5rem);
+  max-width: 100%;
+  aspect-ratio: 1;
+  place-items: center;
+  justify-self: center;
+  border: 2px solid #a4a39d;
+  border-radius: 50%;
+  background:
+    repeating-conic-gradient(from 0deg, #d0cec8 0deg 5deg, #383835 5deg 13deg, #151514 13deg 18deg),
+    #272725;
+  box-shadow: 0 0 0 3px #050505, 0 0 0 5px #55544f, inset 0 0 0 4px #161615, inset 0 0 0 6px #b8b6ae;
+  animation: cassette-reel-spin 8s linear infinite paused;
+}
+
+.cassette-reel::before {
+  position: absolute;
+  inset: 23%;
+  border: 2px solid #9b9992;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #8c8a83, #222220 66%);
+  content: "";
+  box-shadow: inset 0 0 0 2px #171716, 0 1px 3px #000;
+}
+
+.cassette-reel-hub {
+  z-index: 1;
+  width: 14%;
+  aspect-ratio: 1;
+  border: 1px solid #d2d0c9;
+  border-radius: 50%;
+  background: #171716;
+  box-shadow: 0 0 0 2px #393835;
+}
+
+.cassette-deck.is-playing .cassette-reel { animation-play-state: running; }
+
+.cassette-tape-window {
+  position: relative;
+  display: grid;
+  height: 72%;
+  min-height: 1.7rem;
+  overflow: hidden;
+  place-items: center;
+  border: 1px solid #4d4c48;
+  border-radius: 0.5rem;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 12px, rgb(255 255 255 / 4%) 12px 13px),
+    linear-gradient(90deg, #050505, #232321 45%, #050505);
+  box-shadow: inset 0 2px 6px #000, 0 1px rgb(255 255 255 / 8%);
+}
+
+.cassette-tape-line {
+  width: 75%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #aaa8a0 16% 20%, transparent 20% 35%, #77756f 35% 38%, transparent 38% 66%, #99978f 66% 70%, transparent);
+  opacity: 0.72;
+}
+
+.cassette-controls {
+  display: grid;
+  grid-template-columns: 3.1rem auto minmax(6.5rem, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.45rem, 1.5vw, 0.8rem);
+  min-height: 0;
+  padding: 0.3rem 0.7rem 0.25rem;
+  border-top: 1px solid #565550;
+  background: linear-gradient(180deg, #20201f, #0b0b0a 75%);
+  box-shadow: inset 0 2px 3px #050505;
+}
+
+.cassette-speaker {
+  display: grid;
+  gap: 0.28rem;
+  padding: 0.4rem 0.3rem;
+}
+
+.cassette-speaker i {
+  display: block;
+  height: 2px;
+  border-radius: 9px;
+  background: linear-gradient(90deg, #050505, #65645f 18%, #090909 75%);
+  box-shadow: 0 1px #000;
+}
+
+.cassette-transport { display: flex; align-items: center; gap: 0.28rem; }
+
+.cassette-button {
+  display: grid;
+  width: 2.65rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid #55544f;
+  border-radius: 0.42rem;
+  background: linear-gradient(160deg, #343432, #151514 72%);
+  color: #e6e4de;
+  box-shadow: inset 0 1px rgb(255 255 255 / 13%), 0 3px 3px #050505;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 150ms ease, background-color 150ms ease;
+}
+
+.cassette-button svg { width: 1.1rem; height: 1.1rem; stroke-width: 2.2; }
+
+.cassette-button--play {
+  width: 3rem;
+  height: 3rem;
+  border-color: #85837d;
+  background: linear-gradient(155deg, #4b4a46, #222220 70%);
+  box-shadow: inset 0 1px rgb(255 255 255 / 25%), 0 3px 4px #050505;
+}
+
+.cassette-button--play svg { width: 1.35rem; height: 1.35rem; }
+
+.cassette-button:hover,
+.cassette-volume-button:hover { border-color: #c4c2ba; }
+
+.cassette-button:active,
+.cassette-volume-button:active { transform: translateY(2px); box-shadow: inset 0 2px 4px #050505; }
+
+.cassette-button:focus-visible,
+.cassette-volume-button:focus-visible,
+.cassette-range:focus-visible {
+  outline: 2px solid #e9e7df;
+  outline-offset: 3px;
+}
+
+.cassette-loader { animation: cassette-loader-spin 1.2s linear infinite; }
+
+.cassette-seek { min-width: 0; }
+
+.cassette-time-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+  margin-bottom: 0.38rem;
+  color: #c9c7c0;
+  font-size: 0.57rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.cassette-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  overflow: hidden;
+  color: #85837c;
+  font-size: 0.48rem;
+  letter-spacing: 0.12em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.cassette-status-light {
+  width: 0.34rem;
+  height: 0.34rem;
+  flex: 0 0 auto;
+  border: 1px solid #77756e;
+  border-radius: 50%;
+  background: #373632;
+}
+
+.cassette-status-light.is-on {
+  background: #e2e0d8;
+  box-shadow: 0 0 5px rgb(255 255 255 / 40%);
+}
+
+.cassette-range {
+  display: block;
+  width: 100%;
+  height: 0.7rem;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.cassette-range::-webkit-slider-runnable-track {
+  height: 2px;
+  border: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #dedcd4 var(--cassette-range-fill), #55544f var(--cassette-range-fill));
+}
+
+.cassette-range::-moz-range-track {
+  height: 2px;
+  border: 0;
+  border-radius: 2px;
+  background: #55544f;
+}
+
+.cassette-range::-moz-range-progress { height: 2px; background: #dedcd4; }
+
+.cassette-range::-webkit-slider-thumb {
+  width: 0.66rem;
+  height: 0.66rem;
+  margin-top: -0.24rem;
+  appearance: none;
+  border: 1px solid #f0eee7;
+  border-radius: 50%;
+  background: #d0cec6;
+  box-shadow: 0 1px 3px #000;
+}
+
+.cassette-range::-moz-range-thumb {
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 1px solid #f0eee7;
+  border-radius: 50%;
+  background: #d0cec6;
+  box-shadow: 0 1px 3px #000;
+}
+
+.cassette-range:disabled { cursor: not-allowed; opacity: 0.55; }
+.cassette-volume { display: flex; align-items: center; gap: 0.35rem; width: 5.7rem; }
+
+.cassette-volume-button {
+  display: grid;
+  width: 1.55rem;
+  height: 1.8rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  border-radius: 0.3rem;
+  background: transparent;
+  color: #d2d0c8;
+  cursor: pointer;
+  transition: color 150ms ease, transform 120ms ease;
+}
+
+.cassette-volume-button svg { width: 1rem; height: 1rem; }
+.cassette-error { min-height: 1.1rem; margin: 0.35rem 0 0; color: #77756f; font-family: inherit; font-size: 0.62rem; line-height: 1.4; }
+.cassette-error:empty { visibility: hidden; }
+
+@keyframes cassette-reel-spin { to { transform: rotate(360deg); } }
+@keyframes cassette-loader-spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 520px) {
+  .cassette-player { max-width: 100%; }
+
+  .cassette-face { grid-template-rows: 1fr 1fr 1.35fr; }
+
+  .cassette-label {
+    grid-template-columns: minmax(0, 1fr) 3rem;
+    gap: 0.4rem;
+    padding: 0.3rem 0.45rem 0.25rem 1.4rem;
+  }
+
+  .cassette-overline { font-size: 0.48rem; }
+  .cassette-title { margin-top: 0.2rem; font-size: 0.86rem; }
+  .cassette-artist { margin-top: 0.12rem; font-size: 0.5rem; }
+  .cassette-side-mark { font-size: 0.35rem; }
+  .cassette-art { min-height: 0; }
+  .cassette-art-caption { font-size: 0.37rem; }
+  .cassette-window { padding: 0.1rem 0.45rem; }
+  .cassette-reel { width: clamp(1.5rem, 8vw, 1.875rem); }
+  .cassette-tape-window { height: 72%; min-height: 1.35rem; }
+  .cassette-controls {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 2.65rem minmax(0, 1fr);
+    grid-template-areas: "transport volume" "seek seek";
+    gap: 0.08rem 0.5rem;
+    padding: 0.1rem 0.55rem 0.15rem;
+  }
+
+  .cassette-speaker { display: none; }
+  .cassette-transport { grid-area: transport; }
+  .cassette-seek { grid-area: seek; }
+  .cassette-volume { grid-area: volume; }
+  .cassette-button { width: 2.35rem; height: 2.35rem; }
+  .cassette-button--play { width: 2.65rem; height: 2.65rem; }
+  .cassette-time-row { margin-bottom: 0; font-size: 0.46rem; line-height: 1; }
+  .cassette-status { font-size: 0.4rem; }
+  .cassette-range { height: 0.36rem; }
+  .cassette-range::-webkit-slider-thumb { width: 0.58rem; height: 0.58rem; margin-top: -0.2rem; }
+  .cassette-volume { width: 5.3rem; }
+  .cassette-volume-button { width: 1.35rem; height: 1.6rem; }
+  .cassette-volume-button svg { width: 0.9rem; height: 0.9rem; }
+  .cassette-screw { width: 0.78rem; }
+  .cassette-screw--top-left { top: 0.2rem; left: 0.2rem; }
+  .cassette-screw--top-right { top: 0.2rem; right: 0.2rem; }
+  .cassette-screw--bottom-left { bottom: 0.2rem; left: 0.2rem; }
+  .cassette-screw--bottom-right { right: 0.2rem; bottom: 0.2rem; }
+}
+
+@media (max-width: 767px) {
+  .cassette-player {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cassette-reel,
+  .cassette-loader { animation: none; }
+
+  .cassette-button,
+  .cassette-volume-button { transition: none; }
+}
