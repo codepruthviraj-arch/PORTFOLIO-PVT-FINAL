@@ -98,8 +98,12 @@ html.dark {
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     position: relative;
     isolation: isolate;
@@ -121,15 +125,29 @@ html.dark {
   text-transform: uppercase;
   font-weight: 600;
 }
-@utility shadow-card { box-shadow: var(--shadow-card); }
-@utility shadow-pill { box-shadow: var(--shadow-pill); }
+@utility shadow-card {
+  box-shadow: var(--shadow-card);
+}
+@utility shadow-pill {
+  box-shadow: var(--shadow-pill);
+}
 @utility placeholder-stripes {
   background-color: var(--color-placeholder);
-  background-image: repeating-linear-gradient(135deg, transparent 0 14px, oklch(0 0 0 / 0.035) 14px 15px);
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 14px,
+    oklch(0 0 0 / 0.035) 14px 15px
+  );
 }
 
-.reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
-.reveal.in { opacity: 1; transform: none; }
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
 
 .brand-marquee {
   overflow: hidden;
@@ -184,24 +202,30 @@ html.dark {
 }
 
 @keyframes brandMarquee {
-  to { transform: translateX(-50%); }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .brand-marquee { overflow-x: auto; }
-  .brand-marquee__track { animation: none; }
+  .brand-marquee {
+    overflow-x: auto;
+  }
+  .brand-marquee__track {
+    animation: none;
+  }
 }
 
 .hero-slide-down {
   opacity: 0;
   transform: translateY(-24px);
-  animation: heroSlideDown .8s cubic-bezier(.2,.7,.2,1) forwards;
+  animation: heroSlideDown 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
 }
 
 .hero-slide-up {
   opacity: 0;
   transform: translateY(26px);
-  animation: heroSlideUp .9s cubic-bezier(.2,.7,.2,1) forwards;
+  animation: heroSlideUp 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
 }
 
 .hero-fade-in {
@@ -228,4 +252,19 @@ html.dark {
     opacity: 1;
   }
 }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .hero-slide-down, .hero-slide-up { animation: none; opacity: 1; transform: none; } .hero-fade-in { animation: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .hero-slide-down,
+  .hero-slide-up {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-fade-in {
+    animation: none;
+    opacity: 1;
+  }
+}

@@ -100,6 +100,13 @@ function CaseStudy() {
               <div className="mt-4 flex flex-wrap gap-2">
                 {p.roles.map((r) => <span key={r} className="rounded-full bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground">{r}</span>)}
               </div>
+              <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/5 px-4 py-2 text-sm font-bold text-foreground">
+                <span aria-hidden="true" className="relative flex h-2.5 w-2.5 shrink-0">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-60" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
+                </span>
+                For the best experience, switch to higher quality.
+              </p>
             </Reveal>
           </div>
 
