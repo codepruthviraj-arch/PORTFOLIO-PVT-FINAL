@@ -81,7 +81,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Pruthviraj Rajput — Content Producer & Social Media Strategist" },
-      { name: "description", content: "Content producer and social media strategist — strategy, scripting, production, editing and social media." },
+      {
+        name: "description",
+        content:
+          "Content producer and social media strategist — strategy, scripting, production, editing and social media.",
+      },
       { name: "author", content: "Pruthviraj Rajput" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -89,12 +93,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/images/Monochrome%20Graphic%20Portrait%20Avatar.png", type: "image/png" },
+      {
+        rel: "icon",
+        href: "/images/Monochrome%20Graphic%20Portrait%20Avatar.png",
+        type: "image/png",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -108,6 +119,12 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'history.scrollRestoration = "manual"; window.addEventListener("pageshow", () => window.scrollTo(0, 0), { once: true });',
+          }}
+        />
       </head>
       <body>
         <VantaFogBackground />

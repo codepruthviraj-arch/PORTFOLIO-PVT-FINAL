@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useRef, type FormEvent, type MouseEvent } from "react";
 import { ArrowUpRight, ArrowDown, Plus, X, Instagram, Linkedin, Mail, MessageCircle } from "lucide-react";
 import { Nav, Badge } from "@/components/site/Nav";
+import { SectionLink } from "@/components/site/SectionLink";
 import { Footer } from "@/components/site/Footer";
 import { ProjectCard } from "@/components/site/ProjectCard";
 import { MusicPlayer } from "@/components/site/MusicPlayer";
@@ -147,15 +148,17 @@ function Index() {
 function SaturatingImage({ src, alt, wrapClass = "", imgClass = "" }: { src: string; alt: string; wrapClass?: string; imgClass?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState<{ x: string; y: string } | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
   const update = (e: MouseEvent<HTMLDivElement>) => {
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
     setPos({ x: `${((e.clientX - r.left) / r.width) * 100}%`, y: `${((e.clientY - r.top) / r.height) * 100}%` });
+    setIsHovered(true);
   };
   const mask = pos ? `radial-gradient(circle 170px at ${pos.x} ${pos.y}, black 35%, transparent 100%)` : "none";
   return (
-    <div ref={ref} onMouseMove={update} onMouseLeave={() => setPos(null)} className={`relative ${wrapClass}`}>
+    <div ref={ref} onMouseMove={update} onMouseLeave={() => setIsHovered(false)} className={`relative ${wrapClass}`}>
       <img src={src} alt={alt} className={imgClass} />
       <img
         src={src}
@@ -163,7 +166,7 @@ function SaturatingImage({ src, alt, wrapClass = "", imgClass = "" }: { src: str
         aria-hidden
         loading="lazy"
         className="pointer-events-none absolute inset-0 h-full w-full object-contain transition-opacity duration-300"
-        style={{ WebkitMaskImage: mask, maskImage: mask, opacity: pos ? 1 : 0 }}
+        style={{ WebkitMaskImage: mask, maskImage: mask, opacity: isHovered ? 1 : 0 }}
       />
     </div>
   );
@@ -190,8 +193,18 @@ function Hero() {
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">I handle the entire content pipeline.<br /></p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="#contact" className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-3 text-xs font-semibold uppercase tracking-wider text-primary-foreground transition-transform hover:-translate-y-0.5">Let's Work <ArrowUpRight className="h-3.5 w-3.5" /></a>
-              <a href="#work" className="inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-3 text-xs font-semibold uppercase tracking-wider transition-colors hover:bg-muted">View My Work <ArrowDown className="h-3.5 w-3.5" /></a>
+              <SectionLink
+                to="contact"
+                className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-3 text-xs font-semibold uppercase tracking-wider text-primary-foreground transition-transform hover:-translate-y-0.5"
+              >
+                Let's Work <ArrowUpRight className="h-3.5 w-3.5" />
+              </SectionLink>
+              <SectionLink
+                to="work"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-3 text-xs font-semibold uppercase tracking-wider transition-colors hover:bg-muted"
+              >
+                View My Work <ArrowDown className="h-3.5 w-3.5" />
+              </SectionLink>
             </div>
           </div>
           <SaturatingImage src={PROFILE_IMAGE} alt="Portrait of Prithvi" wrapClass="hero-fade-in order-1 -mt-10 md:order-2 md:z-20 md:-mt-72 md:origin-bottom md:scale-[1.3]" imgClass="w-full grayscale" />
@@ -523,7 +536,7 @@ function Contact() {
                     ? "Sending your inquiry…"
                     : status === "error"
                       ? <span className="text-destructive">{error}</span>
-                      : "Replies usually within a couple of days."}
+                      : "Usually responds within a few hours."}
                 </p>
                 <button
                   type="submit"

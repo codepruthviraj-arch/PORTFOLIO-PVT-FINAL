@@ -69,6 +69,7 @@ export function BlackStarField() {
       lastDrawTime = time;
       pointer.influence += ((pointer.active ? 1 : 0) - pointer.influence) * easing;
       context.clearRect(0, 0, width, height);
+      const darkMode = document.documentElement.classList.contains("dark");
 
       for (const star of stars) {
         let influence = 0;
@@ -104,8 +105,9 @@ export function BlackStarField() {
 
         if (star.glossy) {
           const glow = context.createRadialGradient(x, y, 0, x, y, star.radius * 3.2);
-          glow.addColorStop(0, `rgba(20, 21, 23, ${opacity * 0.2})`);
-          glow.addColorStop(1, "rgba(20, 21, 23, 0)");
+          const glowColor = darkMode ? "230, 233, 240" : "20, 21, 23";
+          glow.addColorStop(0, `rgba(${glowColor}, ${opacity * 0.2})`);
+          glow.addColorStop(1, `rgba(${glowColor}, 0)`);
           context.beginPath();
           context.arc(x, y, star.radius * 3.2, 0, Math.PI * 2);
           context.fillStyle = glow;
@@ -124,8 +126,11 @@ export function BlackStarField() {
           0,
           `rgba(255, 255, 255, ${star.glossy ? opacity * 0.82 : opacity * 0.2})`,
         );
-        sphere.addColorStop(0.18, `rgba(44, 45, 47, ${opacity})`);
-        sphere.addColorStop(1, `rgba(8, 9, 10, ${opacity * 0.76})`);
+        sphere.addColorStop(0.18, `rgba(${darkMode ? "220, 225, 235" : "44, 45, 47"}, ${opacity})`);
+        sphere.addColorStop(
+          1,
+          `rgba(${darkMode ? "160, 170, 190" : "8, 9, 10"}, ${opacity * 0.76})`,
+        );
         context.beginPath();
         context.arc(x, y, star.radius, 0, Math.PI * 2);
         context.fillStyle = sphere;

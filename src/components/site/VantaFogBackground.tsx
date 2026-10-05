@@ -74,13 +74,22 @@ export function VantaFogBackground() {
 
   useEffect(() => {
     let disposed = false;
+    let initializationId = 0;
     let effect: VantaEffect | undefined;
 
     const initialize = async () => {
+      const currentInitializationId = ++initializationId;
       if (!window.THREE) await loadScript(THREE_URL);
       if (!window.VANTA?.FOG) await loadScript(VANTA_FOG_URL);
-      if (disposed || !elementRef.current || !window.VANTA?.FOG) return;
+      if (
+        disposed ||
+        currentInitializationId !== initializationId ||
+        !elementRef.current ||
+        !window.VANTA?.FOG
+      )
+        return;
 
+      const darkMode = document.documentElement.classList.contains("dark");
       effect = window.VANTA.FOG({
         el: elementRef.current,
         mouseControls: true,
@@ -88,10 +97,10 @@ export function VantaFogBackground() {
         gyroControls: false,
         minHeight: 200,
         minWidth: 200,
-        highlightColor: 0xffffff,
-        midtoneColor: 0xd4d4d4,
-        lowlightColor: 0xd4d4d4,
-        baseColor: 0xffffff,
+        highlightColor: darkMode ? 0x292929 : 0xffffff,
+        midtoneColor: darkMode ? 0x1b1b1b : 0xd4d4d4,
+        lowlightColor: darkMode ? 0x111111 : 0xd4d4d4,
+        baseColor: darkMode ? 0x151515 : 0xffffff,
         blurFactor: 0.9,
         zoom: 1.2,
       });
@@ -101,8 +110,21 @@ export function VantaFogBackground() {
       if (!disposed) console.error("Unable to initialize the Vanta Fog background.", error);
     });
 
+    const themeObserver = new MutationObserver(() => {
+      effect?.destroy();
+      effect = undefined;
+      void initialize().catch((error: unknown) => {
+        if (!disposed) console.error("Unable to update the Vanta Fog background.", error);
+      });
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
     return () => {
       disposed = true;
+      themeObserver.disconnect();
       effect?.destroy();
     };
   }, []);

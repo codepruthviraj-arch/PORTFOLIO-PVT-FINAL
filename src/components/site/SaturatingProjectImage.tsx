@@ -6,13 +6,10 @@ type SaturatingProjectImageProps = {
   className?: string;
 };
 
-export function SaturatingProjectImage({
-  src,
-  alt,
-  className = "",
-}: SaturatingProjectImageProps) {
+export function SaturatingProjectImage({ src, alt, className = "" }: SaturatingProjectImageProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState<{ x: string; y: string } | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   const updatePosition = (event: MouseEvent<HTMLDivElement>) => {
     const element = ref.current;
@@ -23,6 +20,7 @@ export function SaturatingProjectImage({
       x: `${((event.clientX - bounds.left) / bounds.width) * 100}%`,
       y: `${((event.clientY - bounds.top) / bounds.height) * 100}%`,
     });
+    setIsHovered(true);
   };
 
   const mask = position
@@ -34,7 +32,7 @@ export function SaturatingProjectImage({
       ref={ref}
       className={`relative overflow-hidden ${className}`}
       onMouseMove={updatePosition}
-      onMouseLeave={() => setPosition(null)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <img
         src={src}
@@ -51,7 +49,7 @@ export function SaturatingProjectImage({
         style={{
           WebkitMaskImage: mask,
           maskImage: mask,
-          opacity: position ? 1 : 0,
+          opacity: isHovered ? 1 : 0,
           transition: "opacity 300ms ease",
         }}
       />

@@ -69,6 +69,34 @@
   --shadow-pill: 0 6px 20px -8px oklch(0 0 0 / 0.2);
 }
 
+html.dark {
+  color-scheme: dark;
+  --background: oklch(0.15 0 0);
+  --foreground: oklch(0.94 0 0);
+  --card: oklch(0.21 0 0);
+  --card-foreground: oklch(0.94 0 0);
+  --popover: oklch(0.21 0 0);
+  --popover-foreground: oklch(0.94 0 0);
+  --primary: oklch(0.92 0 0);
+  --primary-foreground: oklch(0.18 0 0);
+  --secondary: oklch(0.26 0 0);
+  --secondary-foreground: oklch(0.94 0 0);
+  --muted: oklch(0.25 0 0);
+  --muted-foreground: oklch(0.68 0 0);
+  --accent: oklch(0.28 0 0);
+  --accent-foreground: oklch(0.94 0 0);
+  --border: oklch(0.32 0 0);
+  --input: oklch(0.32 0 0);
+  --ring: oklch(0.7 0 0);
+  --ink: oklch(0.22 0 0);
+  --ink-foreground: oklch(0.94 0 0);
+  --ink-muted: oklch(0.68 0 0);
+  --ink-border: oklch(0.34 0 0);
+  --placeholder: oklch(0.24 0 0);
+  --shadow-card: 0 20px 50px -25px oklch(0 0 0 / 0.65);
+  --shadow-pill: 0 6px 20px -8px oklch(0 0 0 / 0.55);
+}
+
 @layer base {
   * { border-color: var(--color-border); }
   html { scroll-behavior: smooth; }
