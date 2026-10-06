@@ -48,15 +48,32 @@ const eventCampaignVideos = [
   "mpu2IDZjlTM",
 ];
 const instituteVideos = [
-  "Joa6z_HwJx8",
-  "HIA2JaJwofc",
-  "r97u0ZF6JjM",
-  "SWhPoclbH6M",
+  "https://player.vimeo.com/video/1233487679?badge=0&autopause=0&player_id=0&app_id=58479",
+  "https://player.vimeo.com/video/1233479998?badge=0&autopause=0&player_id=0&app_id=58479",
+  "https://player.vimeo.com/video/1233487944?badge=0&autopause=0&player_id=0&app_id=58479",
+  "https://player.vimeo.com/video/1233487676?badge=0&autopause=0&player_id=0&app_id=58479",
   "WSNe2ByRGEk",
-  "K5ZxFlEHBv4",
+  "https://player.vimeo.com/video/1233487678?badge=0&autopause=0&player_id=0&app_id=58479",
+];
+const professionalServicesVideos = [
+  "https://player.vimeo.com/video/1233482843?badge=0&autopause=0&player_id=0&app_id=58479",
+  "https://player.vimeo.com/video/1233481932?badge=0&autopause=0&player_id=0&app_id=58479",
+  "https://player.vimeo.com/video/1233481933?badge=0&autopause=0&player_id=0&app_id=58479",
+  "https://player.vimeo.com/video/1233481931?badge=0&autopause=0&player_id=0&app_id=58479",
+  "https://player.vimeo.com/video/1233481930?badge=0&autopause=0&player_id=0&app_id=58479",
+  "https://player.vimeo.com/video/1233482842?badge=0&autopause=0&player_id=0&app_id=58479",
 ];
 
-function buildYouTubeEmbedUrl(videoId: string) {
+function buildVideoEmbedUrl(videoId: string) {
+  if (videoId.includes("player.vimeo.com")) {
+    return videoId;
+  }
+
+  const vimeoMatch = videoId.match(/vimeo\.com\/(\d+)/);
+  if (vimeoMatch) {
+    return `https://player.vimeo.com/video/${vimeoMatch[1]}?title=0&byline=0&portrait=0&playsinline=1`;
+  }
+
   const params = new URLSearchParams({
     rel: "0",
     modestbranding: "1",
@@ -110,7 +127,7 @@ function CaseStudy() {
             </Reveal>
           </div>
 
-          {p.slug === "arihant-jewellers" || p.slug === "event-campaigns" || p.slug === "education-client" ? (
+          {p.slug === "arihant-jewellers" || p.slug === "event-campaigns" || p.slug === "education-client" || p.slug === "advocate-client" ? (
             <Reveal className="mt-12">
               <Label>Selected Videos</Label>
               <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -118,16 +135,24 @@ function CaseStudy() {
                   ? jewelleryVideos
                   : p.slug === "event-campaigns"
                     ? eventCampaignVideos
-                    : instituteVideos).map((videoId, index) => (
+                    : p.slug === "education-client"
+                      ? instituteVideos
+                      : professionalServicesVideos).map((videoId, index) => (
                   <div
-                    key={videoId}
+                    key={`${videoId}-${index}`}
                     className="mx-auto w-full max-w-[360px] overflow-hidden rounded-[1.5rem] border border-border bg-card shadow-card"
                   >
                     <div className="aspect-[9/16] w-full">
                       <iframe
                         className="h-full w-full"
-                        src={buildYouTubeEmbedUrl(videoId)}
-                        title={`${p.name} video ${index + 1}`}
+                        src={buildVideoEmbedUrl(videoId)}
+                        title={videoId.includes("1233482842")
+                          ? "shlok's father 4th reel"
+                          : videoId.includes("1233481931")
+                            ? "shlok's father 3rd reel"
+                            : videoId.includes("1233481930")
+                              ? "6Th video"
+                            : `${p.name} video ${index + 1}`}
                         allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerPolicy="strict-origin-when-cross-origin"
                         allowFullScreen
@@ -145,7 +170,7 @@ function CaseStudy() {
                 <div className="aspect-[9/16] w-full">
                   <iframe
                     className="h-full w-full"
-                    src={buildYouTubeEmbedUrl("uDGcUm2gqio")}
+                    src={buildVideoEmbedUrl("uDGcUm2gqio")}
                     title="YouTube short"
                     allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
@@ -168,8 +193,6 @@ function CaseStudy() {
               ))}
             </ol>
           </Reveal>
-
-          <Reveal className="mt-20"><Label>Result</Label><p className="mt-4 text-xl text-muted-foreground">{p.result ?? "[Add result]"}</p></Reveal>
 
           <Link to="/work/$slug" params={{ slug: next.slug }} className="group mt-24 flex items-center justify-between border-t border-border pt-10">
             <div><p className="label-mono text-muted-foreground">Next project</p><p className="mt-2 text-3xl font-bold uppercase tracking-tight md:text-5xl">{next.name}</p></div>
