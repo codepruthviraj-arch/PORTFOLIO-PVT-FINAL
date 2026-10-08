@@ -58,7 +58,7 @@ const BRAND_LOGOS = [
     src: "https://yt3.googleusercontent.com/F4_xKgodlOQ0AoWCNgBP6tCL1H2MMYhW8XvwhmEqj-w91rvC5u8PUDwrxYBGBdPXiCgsIlANEA=s160-c-k-c0x00ffffff-no-rj",
   },
   {
-    name: "S’Wich",
+    name: "S Wich",
     src: "https://instagram.fpnq7-10.fna.fbcdn.net/v/t51.2885-19/455011927_2127269261006643_3681704367616476548_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy42ODcuQzMifQ%3D%3D&_nc_ohc=-UvbgVYQdbYQ7kNvwFlL3kE&_nc_oc=AdrZXYQkVzdaLXaPDgbRHn6NB6OTwOBWkH6aISOdLWWPx7n-szrBT4Ebr52evRb7tHg&_nc_zt=24&_nc_ht=instagram.fpnq7-10.fna&_nc_ss=7baaf&oh=00_AQM5XBxsTs8Vg4i5ZdxjjGWtLpNDa0c0WMEI3Ouksyrupg&oe=6AC955E6",
   },
   {
@@ -209,7 +209,7 @@ function Hero() {
           </div>
           <SaturatingImage src={PROFILE_IMAGE} alt="Portrait of Prithvi" wrapClass="hero-fade-in order-1 -mt-10 md:order-2 md:z-20 md:-mt-72 md:origin-bottom md:scale-[1.3]" imgClass="w-full grayscale" />
           <div className="hero-slide-up order-3 flex flex-col gap-3 md:items-end md:pb-14" style={{ animationDelay: "0.15s" }}>
-            <p className="max-w-[16rem] text-sm leading-relaxed text-muted-foreground md:text-right">From concept to distribution, I build and manage content around what each project actually needs.</p>
+            <p className="max-w-[16rem] text-sm leading-relaxed text-muted-foreground md:text-right">From <em>concept to distribution</em>, I build and manage content around what each project actually <em>needs</em>.</p>
             <div className="hero-slide-up flex flex-wrap gap-2 md:justify-end" style={{ animationDelay: "0.25s" }}>
               <a href={links.instagram} className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-xs font-medium shadow-pill"><Instagram className="h-3.5 w-3.5" />Instagram</a>
               <a href={links.whatsapp} className="inline-flex items-center gap-1.5 rounded-full border border-border px-4 py-2 text-xs font-medium shadow-pill"><MessageCircle className="h-3.5 w-3.5" />WhatsApp</a>
@@ -339,7 +339,7 @@ function About() {
             </div>
           </Reveal>
           <Reveal className="space-y-5 text-lg leading-relaxed text-muted-foreground md:pt-24">
-            <p className="hero-slide-up text-2xl font-medium leading-snug tracking-tight text-foreground" style={{ animationDelay: "0.08s" }}>I focus on turning ideas into content that actually gets used, published and seen.</p>
+            <p className="hero-slide-up text-2xl font-medium leading-snug tracking-tight text-foreground" style={{ animationDelay: "0.08s" }}>I turn ideas into content that actually gets used, published and seen.</p>
             <p className="hero-slide-up" style={{ animationDelay: "0.24s" }}>I don't believe every project needs the same process. Sometimes a brand needs a script. Sometimes it needs a shoot. Sometimes it needs someone to take the entire content pipeline off its hands.</p>
             <p className="hero-slide-up font-semibold text-foreground" style={{ animationDelay: "0.32s" }}>I step in where I'm needed.</p>
             <MusicPlayer />
