@@ -61,7 +61,7 @@ const professionalServicesVideos = [
   "https://player.vimeo.com/video/1233481933?badge=0&autopause=0&player_id=0&app_id=58479",
   "https://player.vimeo.com/video/1233481931?badge=0&autopause=0&player_id=0&app_id=58479",
   "https://player.vimeo.com/video/1233481930?badge=0&autopause=0&player_id=0&app_id=58479",
-  "https://player.vimeo.com/video/1233482842?badge=0&autopause=0&player_id=0&app_id=58479",
+  "https://player.vimeo.com/video/1234325476?badge=0&autopause=0&player_id=0&app_id=58479",
 ];
 
 function buildVideoEmbedUrl(videoId: string) {
@@ -146,14 +146,16 @@ function CaseStudy() {
                       <iframe
                         className="h-full w-full"
                         src={buildVideoEmbedUrl(videoId)}
-                        title={videoId.includes("1233482842")
-                          ? "shlok's father 4th reel"
+                        title={videoId.includes("1234325476")
+                          ? "book fest prapti reel"
                           : videoId.includes("1233481931")
                             ? "shlok's father 3rd reel"
                             : videoId.includes("1233481930")
                               ? "6Th video"
                             : `${p.name} video ${index + 1}`}
-                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allow={videoId.includes("1234325476")
+                          ? "autoplay; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                          : "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"}
                         referrerPolicy="strict-origin-when-cross-origin"
                         allowFullScreen
                         loading="lazy"
