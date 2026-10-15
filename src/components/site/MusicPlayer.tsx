@@ -9,7 +9,9 @@ function formatTime(seconds: number) {
   }
 
   const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = Math.floor(seconds % 60).toString().padStart(2, "0");
+  const remainingSeconds = Math.floor(seconds % 60)
+    .toString()
+    .padStart(2, "0");
   return `${minutes}:${remainingSeconds}`;
 }
 
@@ -70,7 +72,10 @@ export function MusicPlayer() {
     }
   }, [trackIndex]);
 
-  const changeTrack = (step: number, shouldResume = Boolean(audioRef.current && !audioRef.current.paused)) => {
+  const changeTrack = (
+    step: number,
+    shouldResume = Boolean(audioRef.current && !audioRef.current.paused),
+  ) => {
     resumeAfterTrackChange.current = shouldResume;
     setTrackIndex((index) => (index + step + musicTracks.length) % musicTracks.length);
   };
@@ -116,7 +121,10 @@ export function MusicPlayer() {
             <div className="cassette-track-copy">
               <div className="cassette-overline">
                 <span>MY RECENT FAV SONGS</span>
-                <span className="cassette-track-count">{String(trackIndex + 1).padStart(2, "0")} / {String(musicTracks.length).padStart(2, "0")}</span>
+                <span className="cassette-track-count">
+                  {String(trackIndex + 1).padStart(2, "0")} /{" "}
+                  {String(musicTracks.length).padStart(2, "0")}
+                </span>
               </div>
               <h3 className="cassette-title">{track.title}</h3>
               <p className="cassette-artist">{track.artist}</p>
@@ -132,26 +140,48 @@ export function MusicPlayer() {
                 onError={() => setArtworkFailed(true)}
               />
             ) : (
-              <div className="cassette-art cassette-art--empty" role="img" aria-label="Album artwork not added">
+              <div
+                className="cassette-art cassette-art--empty"
+                role="img"
+                aria-label="Album artwork not added"
+              >
                 <span className="cassette-art-orbit" aria-hidden="true" />
-                <span className="cassette-art-caption">Side A<br />Personal mix</span>
+                <span className="cassette-art-caption">
+                  Side A<br />
+                  Personal mix
+                </span>
               </div>
             )}
           </div>
 
           <div className="cassette-window" aria-hidden="true">
-            <div className="cassette-reel cassette-reel--left"><span className="cassette-reel-hub" /></div>
-            <div className="cassette-tape-window"><span className="cassette-tape-line" /></div>
-            <div className="cassette-reel cassette-reel--right"><span className="cassette-reel-hub" /></div>
+            <div className="cassette-reel cassette-reel--left">
+              <span className="cassette-reel-hub" />
+            </div>
+            <div className="cassette-tape-window">
+              <span className="cassette-tape-line" />
+            </div>
+            <div className="cassette-reel cassette-reel--right">
+              <span className="cassette-reel-hub" />
+            </div>
           </div>
 
           <div className="cassette-controls">
             <div className="cassette-speaker" aria-hidden="true">
-              <i /><i /><i /><i />
+              <i />
+              <i />
+              <i />
+              <i />
             </div>
 
             <div className="cassette-transport">
-              <button type="button" className="cassette-button" onClick={() => changeTrack(-1)} aria-label="Previous track" title="Previous track">
+              <button
+                type="button"
+                className="cassette-button"
+                onClick={() => changeTrack(-1)}
+                aria-label="Previous track"
+                title="Previous track"
+              >
                 <SkipBack aria-hidden="true" />
               </button>
               <button
@@ -161,9 +191,21 @@ export function MusicPlayer() {
                 aria-label={isLoading ? "Loading track" : isPlaying ? "Pause track" : "Play track"}
                 title={isPlaying ? "Pause" : "Play"}
               >
-                {isLoading ? <LoaderCircle className="cassette-loader" aria-hidden="true" /> : isPlaying ? <Pause aria-hidden="true" /> : <Play aria-hidden="true" />}
+                {isLoading ? (
+                  <LoaderCircle className="cassette-loader" aria-hidden="true" />
+                ) : isPlaying ? (
+                  <Pause aria-hidden="true" />
+                ) : (
+                  <Play aria-hidden="true" />
+                )}
               </button>
-              <button type="button" className="cassette-button" onClick={() => changeTrack(1)} aria-label="Next track" title="Next track">
+              <button
+                type="button"
+                className="cassette-button"
+                onClick={() => changeTrack(1)}
+                aria-label="Next track"
+                title="Next track"
+              >
                 <SkipForward aria-hidden="true" />
               </button>
             </div>
@@ -172,7 +214,10 @@ export function MusicPlayer() {
               <div className="cassette-time-row">
                 <span>{formatTime(currentTime)}</span>
                 <span className="cassette-status" role="status" aria-live="polite">
-                  <i className={isPlaying ? "cassette-status-light is-on" : "cassette-status-light"} aria-hidden="true" />
+                  <i
+                    className={isPlaying ? "cassette-status-light is-on" : "cassette-status-light"}
+                    aria-hidden="true"
+                  />
                   {error ? "Tape error" : isLoading ? "Loading" : isPlaying ? "Playing" : "Standby"}
                 </span>
                 <span>{duration > 0 ? formatTime(duration) : "--:--"}</span>
@@ -199,7 +244,13 @@ export function MusicPlayer() {
             </div>
 
             <div className="cassette-volume">
-              <button type="button" className="cassette-volume-button" onClick={toggleMute} aria-label={volume === 0 ? "Unmute" : "Mute"} title={volume === 0 ? "Unmute" : "Mute"}>
+              <button
+                type="button"
+                className="cassette-volume-button"
+                onClick={toggleMute}
+                aria-label={volume === 0 ? "Unmute" : "Mute"}
+                title={volume === 0 ? "Unmute" : "Mute"}
+              >
                 {volume === 0 ? <VolumeX aria-hidden="true" /> : <Volume2 aria-hidden="true" />}
               </button>
               <input
@@ -219,7 +270,9 @@ export function MusicPlayer() {
         </div>
       </div>
 
-      <p className="cassette-error" aria-live="polite">{error}</p>
+      <p className="cassette-error" aria-live="polite">
+        {error}
+      </p>
       <audio
         ref={audioRef}
         src={track.audio}
