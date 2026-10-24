@@ -38,14 +38,14 @@ export function SaturatingProjectImage({ src, alt, className = "" }: SaturatingP
         src={src}
         alt={alt}
         loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover grayscale"
+        className="absolute inset-0 h-full w-full object-cover md:grayscale"
       />
       <img
         src={src}
         alt=""
         aria-hidden="true"
         loading="lazy"
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        className="pointer-events-none absolute inset-0 hidden h-full w-full object-cover md:block"
         style={{
           WebkitMaskImage: mask,
           maskImage: mask,

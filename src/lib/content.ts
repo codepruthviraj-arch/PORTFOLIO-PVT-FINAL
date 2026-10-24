@@ -20,7 +20,7 @@ export const projects: Project[] = [
     name: "Event Promotional Campaigns",
     category: "Events · Promotion",
     role: "Concepts, reels, editing & promotion",
-    image: "/images/Gritty%20Cinematic%20Events%20Collage.png",
+    image: "https://ik.imagekit.io/prithvii/Gritty%20Cinematic%20Events%20Collage.png",
     description: "",
     tags: ["Concepts", "Reels", "Editing", "Promotion"],
     roles: ["Concept", "Scripting", "Videography", "Editing", "Social Media"],
@@ -31,7 +31,7 @@ export const projects: Project[] = [
     location: "Chhatrapati Sambhajinagar, Maharashtra",
     category: "Content Production · Social Media",
     role: "Strategy, scripting, production, editing & social",
-    image: "/images/Gritty%20Gold%20Jewellers%20Team%20Collage.png",
+    image: "https://ik.imagekit.io/prithvii/Gritty%20Gold%20Jewellers%20Team%20Collage.png",
     description:
       "Developing social-first content for a jewellery brand, from concepts and scripts to production, editing and publishing.",
     tags: ["Content", "Production", "Editing", "Social Media"],
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     name: "Institute",
     category: "Social Media Management",
     role: "Planning, reels, stories & editing",
-    image: "/images/Institute%20Education%20Collage%20Poster.png",
+    image: "https://ik.imagekit.io/prithvii/Institute%20Education%20Collage%20Poster.png",
     description:
       "Running social media for an education institute — content planning, reels, stories and editing.",
     tags: ["Planning", "Reels", "Stories", "Editing"],
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     name: "Professional Services",
     category: "Short-form Content",
     role: "Content creation & reel editing",
-    image: "/images/Professional%20Portrait%20Collage.png",
+    image: "https://ik.imagekit.io/prithvii/Professional%20Portrait%20Collage.png",
     description:
       "Short-form video content for a professional services client, from creation to reel edit.",
     tags: ["Short-form", "Reels", "Editing"],

@@ -118,12 +118,12 @@ export const Route = createFileRoute("/")({
       { name: "description", content: DESC },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
-      { property: "og:image", content: "https://prithvii.vercel.app/og-image.jpg" },
+      { property: "og:image", content: "https://ik.imagekit.io/prithvii/Untitled%20design%20(5).png" },
       { property: "og:url", content: "https://prithvii.vercel.app/" },
       { property: "og:type", content: "website" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
-      { name: "twitter:image", content: "https://prithvii.vercel.app/og-image.jpg" },
+      { name: "twitter:image", content: "https://ik.imagekit.io/prithvii/Untitled%20design%20(5).png" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
@@ -301,7 +301,7 @@ function Twisted() {
     <section className="px-4 py-20">
       <Reveal className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1fr_1.3fr]">
         <div className="relative aspect-square overflow-hidden rounded-3xl border border-border bg-card/70 backdrop-blur-sm">
-          <img src="/images/IMG_2774.PNG" alt="Twisted Media logo" className="h-full w-full object-cover" loading="lazy" />
+          <img src="https://ik.imagekit.io/prithvii/IMG_2774.PNG" alt="Twisted Media logo" className="h-full w-full object-cover" loading="lazy" />
         </div>
         <div>
           <p className="label-mono text-muted-foreground">/Also Building Twisted Media</p>
@@ -324,7 +324,7 @@ function About() {
             <div className="mt-10 flex flex-col items-center gap-8">
               <a href={links.instagram} target="_blank" rel="noreferrer" className="block aspect-square w-44 overflow-hidden rounded-full border border-border bg-card shadow-card transition-transform hover:scale-[1.02] sm:w-52">
                 <img
-                  src="/images/IMG_7210.JPG.jpeg"
+                  src="https://ik.imagekit.io/prithvii/IMG_7210.JPG.jpeg"
                   alt="Portrait of Prithvi"
                   className="h-full w-full object-cover grayscale"
                   loading="lazy"
