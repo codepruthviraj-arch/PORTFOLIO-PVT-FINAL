@@ -32,20 +32,20 @@ export const Route = createFileRoute("/work/$slug")({
 
 const flow = ["Strategy", "Concept", "Script", "Production", "Edit", "Distribution"];
 const jewelleryVideos = [
-  "bbg-P-SaYbs",
-  "A2GE1nMTFIU",
-  "HhFvPamvAfM",
-  "MgnzMbNar14",
-  "x-ZIBqFJlrU",
-  "wkEn-7RWcBg",
+  "https://vimeo.com/1239031181?share=copy&fl=sv&fe=ci",
+  "https://vimeo.com/1239031183?share=copy&fl=sv&fe=ci",
+  "https://vimeo.com/1239031182?share=copy&fl=sv&fe=ci",
+  "https://vimeo.com/1239031288?share=copy&fl=sv&fe=ci",
+  "https://vimeo.com/1239031284?share=copy&fl=sv&fe=ci",
+  "https://vimeo.com/1239031355?share=copy&fl=sv&fe=ci",
 ];
 const eventCampaignVideos = [
   "x-2LphCY0ig",
-  "_g-O2RbZn_I",
-  "-LV6x17IGGI",
-  "naXvoqbFCXA",
-  "r2nHJ3tME1k",
-  "mpu2IDZjlTM",
+  "https://vimeo.com/1236281801?share=copy&fl=sv&fe=ci",
+  "https://vimeo.com/1239029314?share=copy&fl=sv&fe=ci",
+  "https://vimeo.com/1239029797?share=copy&fl=sv&fe=ci",
+  "https://vimeo.com/1239029315?share=copy&fl=sv&fe=ci",
+  "https://vimeo.com/1239030349?share=copy&fl=sv&fe=ci",
 ];
 const instituteVideos = [
   "https://player.vimeo.com/video/1233487679?badge=0&autopause=0&player_id=0&app_id=58479",
