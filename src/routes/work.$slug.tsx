@@ -97,25 +97,52 @@ function CaseStudy() {
       <Nav />
       <main className="px-4 pb-20 pt-28">
         <article className="mx-auto max-w-6xl">
-          <SectionLink to="work" className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground">
-            <ArrowLeft className="h-3.5 w-3.5" />All work
+          <SectionLink
+            to="work"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground hover:text-foreground"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            All work
           </SectionLink>
           <Reveal>
-            <p className="label-mono mt-10 text-muted-foreground">{p.category}{p.location ? ` · ${p.location}` : ""}</p>
-            <h1 className="mt-4 text-5xl font-extrabold uppercase leading-[0.95] tracking-tight md:text-8xl">{p.name}</h1>
+            <p className="label-mono mt-10 text-muted-foreground">
+              {p.category}
+              {p.location ? ` · ${p.location}` : ""}
+            </p>
+            <h1 className="mt-4 text-5xl font-extrabold uppercase leading-[0.95] tracking-tight md:text-8xl">
+              {p.name}
+            </h1>
             {p.description && (
               <p className="mt-6 max-w-2xl text-lg text-muted-foreground">{p.description}</p>
             )}
           </Reveal>
           <Reveal>
-            {p.image ? <SaturatingProjectImage src={p.image} alt={p.name} className="mt-12 aspect-[4/3] w-full rounded-3xl" /> : <Placeholder label="[Add hero image / reel thumbnail]" className="mt-12 aspect-[4/3] w-full rounded-3xl" />}
+            {p.image ? (
+              <SaturatingProjectImage
+                src={p.image}
+                alt={p.name}
+                className="mt-12 aspect-[4/3] w-full rounded-3xl"
+              />
+            ) : (
+              <Placeholder
+                label="[Add hero image / reel thumbnail]"
+                className="mt-12 aspect-[4/3] w-full rounded-3xl"
+              />
+            )}
           </Reveal>
 
           <div className="mt-20 grid gap-14">
             <Reveal>
               <Label>My Role</Label>
               <div className="mt-4 flex flex-wrap gap-2">
-                {p.roles.map((r) => <span key={r} className="rounded-full bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground">{r}</span>)}
+                {p.roles.map((r) => (
+                  <span
+                    key={r}
+                    className="rounded-full bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary-foreground"
+                  >
+                    {r}
+                  </span>
+                ))}
               </div>
               <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-red-500/25 bg-red-500/5 px-4 py-2 text-sm font-bold text-foreground">
                 <span aria-hidden="true" className="relative flex h-2.5 w-2.5 shrink-0">
@@ -127,7 +154,10 @@ function CaseStudy() {
             </Reveal>
           </div>
 
-          {p.slug === "arihant-jewellers" || p.slug === "event-campaigns" || p.slug === "education-client" || p.slug === "advocate-client" ? (
+          {p.slug === "arihant-jewellers" ||
+          p.slug === "event-campaigns" ||
+          p.slug === "education-client" ||
+          p.slug === "advocate-client" ? (
             <Reveal className="mt-12">
               <Label>Selected Videos</Label>
               <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -137,7 +167,8 @@ function CaseStudy() {
                     ? eventCampaignVideos
                     : p.slug === "education-client"
                       ? instituteVideos
-                      : professionalServicesVideos).map((videoId, index) => (
+                      : professionalServicesVideos
+                ).map((videoId, index) => (
                   <div
                     key={`${videoId}-${index}`}
                     className="mx-auto w-full max-w-[360px] overflow-hidden rounded-[1.5rem] border border-border bg-card shadow-card"
@@ -146,16 +177,20 @@ function CaseStudy() {
                       <iframe
                         className="h-full w-full"
                         src={buildVideoEmbedUrl(videoId)}
-                        title={videoId.includes("1234325476")
-                          ? "book fest prapti reel"
-                          : videoId.includes("1233481931")
-                            ? "shlok's father 3rd reel"
-                            : videoId.includes("1233481930")
-                              ? "6Th video"
-                            : `${p.name} video ${index + 1}`}
-                        allow={videoId.includes("1234325476")
-                          ? "autoplay; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                          : "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"}
+                        title={
+                          videoId.includes("1234325476")
+                            ? "book fest prapti reel"
+                            : videoId.includes("1233481931")
+                              ? "shlok's father 3rd reel"
+                              : videoId.includes("1233481930")
+                                ? "6Th video"
+                                : `${p.name} video ${index + 1}`
+                        }
+                        allow={
+                          videoId.includes("1234325476")
+                            ? "autoplay; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                            : "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        }
                         referrerPolicy="strict-origin-when-cross-origin"
                         allowFullScreen
                         loading="lazy"
@@ -189,15 +224,28 @@ function CaseStudy() {
             <ol className="mt-8 flex flex-col gap-2 md:flex-row md:flex-wrap md:items-center md:gap-4">
               {flow.map((s, i) => (
                 <li key={s} className="flex items-center gap-4">
-                  <span className={`text-2xl font-semibold uppercase tracking-tight md:text-3xl ${p.roles.some((r) => s.startsWith(r.slice(0, 4))) ? "" : "text-ink-muted"}`}>{s}</span>
+                  <span
+                    className={`text-2xl font-semibold uppercase tracking-tight md:text-3xl ${p.roles.some((r) => s.startsWith(r.slice(0, 4))) ? "" : "text-ink-muted"}`}
+                  >
+                    {s}
+                  </span>
                   {i < flow.length - 1 && <span className="text-ink-muted">→</span>}
                 </li>
               ))}
             </ol>
           </Reveal>
 
-          <Link to="/work/$slug" params={{ slug: next.slug }} className="group mt-24 flex items-center justify-between border-t border-border pt-10">
-            <div><p className="label-mono text-muted-foreground">Next project</p><p className="mt-2 text-3xl font-bold uppercase tracking-tight md:text-5xl">{next.name}</p></div>
+          <Link
+            to="/work/$slug"
+            params={{ slug: next.slug }}
+            className="group mt-24 flex items-center justify-between border-t border-border pt-10"
+          >
+            <div>
+              <p className="label-mono text-muted-foreground">Next project</p>
+              <p className="mt-2 text-3xl font-bold uppercase tracking-tight md:text-5xl">
+                {next.name}
+              </p>
+            </div>
             <ArrowUpRight className="h-10 w-10 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
           </Link>
         </article>

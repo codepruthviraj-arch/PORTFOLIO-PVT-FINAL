@@ -6,7 +6,11 @@ import { Placeholder } from "./Reveal";
 
 export function ProjectCard({ p }: { p: Project }) {
   return (
-    <Link to="/work/$slug" params={{ slug: p.slug }} className="group block rounded-2xl bg-card p-3 shadow-card transition-transform duration-500 hover:-translate-y-1.5">
+    <Link
+      to="/work/$slug"
+      params={{ slug: p.slug }}
+      className="group block rounded-2xl bg-card p-3 shadow-card transition-transform duration-500 hover:-translate-y-1.5"
+    >
       <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
         {p.image ? (
           <SaturatingProjectImage src={p.image} alt={p.name} className="h-full w-full" />
@@ -21,10 +25,17 @@ export function ProjectCard({ p }: { p: Project }) {
         <h3 className="text-xl font-semibold uppercase tracking-tight">{p.name}</h3>
         <div className="mt-4 flex flex-wrap gap-2">
           {p.tags.map((t) => (
-            <span key={t} className="label-mono rounded-full border border-border px-3 py-1.5 text-muted-foreground">{t}</span>
+            <span
+              key={t}
+              className="label-mono rounded-full border border-border px-3 py-1.5 text-muted-foreground"
+            >
+              {t}
+            </span>
           ))}
         </div>
-        <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider">View Project <ArrowUpRight className="h-3.5 w-3.5" /></span>
+        <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider">
+          View Project <ArrowUpRight className="h-3.5 w-3.5" />
+        </span>
       </div>
     </Link>
   );

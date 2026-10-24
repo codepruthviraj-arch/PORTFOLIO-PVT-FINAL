@@ -9,6 +9,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import { BlackStarField } from "@/components/site/BlackStarField";
@@ -131,6 +132,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <BlackStarField />
         <div className="relative z-10 min-h-screen">{children}</div>
         <Scripts />
+        <Analytics />
       </body>
     </html>
   );
